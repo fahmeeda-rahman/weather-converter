@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Converter</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex items-center justify-center min-h-screen bg-gradient-to-r from-blue-400 to-blue-600">
+    <div class="bg-white p-6 rounded-lg shadow-lg w-96">
+        <h2 class="text-2xl font-bold text-center mb-4">Weather Converter 🌡</h2>
+        
+        <div class="mb-4">
+            <label class="block text-gray-700 font-semibold">Enter Temperature:</label>
+            <input id="temperature" type="number" class="w-full p-2 border rounded mt-1" placeholder="Enter value">
+        </div>
+        
+        <div class="mb-4">
+            <label class="block text-gray-700 font-semibold">From:</label>
+            <select id="fromUnit" class="w-full p-2 border rounded mt-1">
+                <option value="C">Celsius (°C)</option>
+                <option value="F">Fahrenheit (°F)</option>
+                <option value="K">Kelvin (K)</option>
+            </select>
+        </div>
+        
+        <div class="mb-4">
+            <label class="block text-gray-700 font-semibold">To:</label>
+            <select id="toUnit" class="w-full p-2 border rounded mt-1">
+                <option value="C">Celsius (°C)</option>
+                <option value="F">Fahrenheit (°F)</option>
+                <option value="K">Kelvin (K)</option>
+            </select>
+        </div>
+        
+        <button onclick="convertTemperature()" class="w-full bg-blue-500 text-white p-2 rounded-lg font-semibold hover:bg-blue-600 transition">Convert</button>
+        
+        <div id="result" class="text-center mt-4 text-lg font-bold text-gray-800"></div>
+    </div>
+
+    <script>
+        function convertTemperature() {
+            let temp = parseFloat(document.getElementById("temperature").value);
+            let fromUnit = document.getElementById("fromUnit").value;
+            let toUnit = document.getElementById("toUnit").value;
+            let resultText = "";
+
+            if (isNaN(temp)) {
+                resultText = "Please enter a valid temperature!";
+            } else if (fromUnit === toUnit) {
+                resultText = `Same unit selected: ${temp}°${toUnit}`;
+            } else {
+                let convertedTemp;
+                
+                if (fromUnit === "C" && toUnit === "F") {
+                    convertedTemp = (temp * 9/5) + 32;
+                } else if (fromUnit === "C" && toUnit === "K") {
+                    convertedTemp = temp + 273.15;
+                } else if (fromUnit === "F" && toUnit === "C") {
+                    convertedTemp = (temp - 32) * 5/9;
+                } else if (fromUnit === "F" && toUnit === "K") {
+                    convertedTemp = (temp - 32) * 5/9 + 273.15;
+                } else if (fromUnit === "K" && toUnit === "C") {
+                    convertedTemp = temp - 273.15;
+                } else if (fromUnit === "K" && toUnit === "F") {
+                    convertedTemp = (temp - 273.15) * 9/5 + 32;
+                }
+                resultText = `Converted Temperature: ${convertedTemp.toFixed(2)}°${toUnit}`;
+            }
+            
+            document.getElementById("result").textContent = resultText;
+        }
+    </script>
+</body>
+</html>
