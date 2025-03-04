@@ -3,11 +3,14 @@ function convertTemperature() {
     let fromUnit = document.getElementById("fromUnit").value;
     let toUnit = document.getElementById("toUnit").value;
     let resultText = "";
+    let resultDiv = document.getElementById("result");
 
     if (isNaN(temp)) {
-        resultText = "Please enter a valid temperature!";
+        resultText = "❌ Please enter a valid temperature!";
+        resultDiv.classList.remove("opacity-100");
     } else if (fromUnit === toUnit) {
-        resultText = `Same unit selected: ${temp}°${toUnit}`;
+        resultText = `⚠ Same unit selected: ${temp}°${toUnit}`;
+        resultDiv.classList.add("opacity-100");
     } else {
         let convertedTemp;
         
@@ -24,8 +27,10 @@ function convertTemperature() {
         } else if (fromUnit === "K" && toUnit === "F") {
             convertedTemp = (temp - 273.15) * 9/5 + 32;
         }
-        resultText = `Converted Temperature: ${convertedTemp.toFixed(2)}°${toUnit}`;
+        
+        resultText = `✅ Converted Temperature: ${convertedTemp.toFixed(2)}°${toUnit}`;
+        resultDiv.classList.add("opacity-100");
     }
     
-    document.getElementById("result").textContent = resultText;
+    resultDiv.textContent = resultText;
 }

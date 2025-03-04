@@ -6,9 +6,9 @@
     <title>Weather Converter</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="flex items-center justify-center min-h-screen bg-gradient-to-r from-blue-400 to-blue-600">
+<body class="flex items-center justify-center min-h-screen bg-gradient-to-r from-yellow-600 to-orange-500">
     <div class="bg-white p-6 rounded-lg shadow-lg w-96">
-        <h2 class="text-2xl font-bold text-center mb-4">Weather Converter 🌡</h2>
+        <h2 class="text-2xl font-bold text-center mb-4 text-yellow-600">Weather Converter 🌡</h2>
         
         <div class="mb-4">
             <label class="block text-gray-700 font-semibold">Enter Temperature:</label>
@@ -33,10 +33,11 @@
             </select>
         </div>
         
-        <button onclick="convertTemperature()" class="w-full bg-blue-500 text-white p-2 rounded-lg font-semibold hover:bg-blue-600 transition">Convert</button>
+        <button onclick="convertTemperature()" class="w-full bg-yellow-600 text-white p-2 rounded-lg font-semibold hover:bg-yellow-700 transition">Convert</button>
         
-        <div id="result" class="text-center mt-4 text-lg font-bold text-gray-800"></div>
+        <div id="result" class="text-center mt-4 text-lg font-bold text-gray-800 opacity-0 transition-opacity duration-500"></div>
     </div>
+
 
     <script src="./script.js"></script>
 </body>
