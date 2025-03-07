@@ -5,10 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Converter</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .main-container{
+            margin: 20vh;
+        }
+    </style>
 </head>
-<body class="flex items-center justify-center min-h-screen bg-gradient-to-r from-yellow-600 to-orange-500">
-    <div class="bg-white p-6 rounded-lg shadow-lg w-96">
-        <h2 class="text-2xl font-bold text-center mb-4 text-yellow-600">Weather Converter 🌡</h2>
+<body class="flex items-center justify-center min-h-screenh-screen bg-gradient-to-r from-[#6a11cb] to-[#2575fc]">
+    <div class="main-container bg-white p-6 rounded-lg shadow-lg w-96 ">
+        <h2 class="text-2xl font-bold text-center mb-4 bg-gradient-to-r from-[#6a11cb] to-[#2575fc] bg-clip-text text-transparent">
+            Weather Converter 🌡
+        </h2>
+        
         
         <div class="mb-4">
             <label class="block text-gray-700 font-semibold">Enter Temperature:</label>
@@ -27,13 +35,20 @@
         <div class="mb-4">
             <label class="block text-gray-700 font-semibold">To:</label>
             <select id="toUnit" class="w-full p-2 border rounded mt-1">
-                <option value="C">Celsius (°C)</option>
+                <option  value="C">Celsius (°C)</option>
                 <option value="F">Fahrenheit (°F)</option>
                 <option value="K">Kelvin (K)</option>
             </select>
         </div>
         
-        <button onclick="convertTemperature()" class="w-full bg-yellow-600 text-white p-2 rounded-lg font-semibold hover:bg-yellow-700 transition">Convert</button>
+        <button onclick="convertTemperature()"
+        class="w-full bg-gradient-to-r from-[#6a11cb] to-[#2575fc] text-white p-2 rounded-lg font-semibold transition-all duration-500 hover:bg-gradient-to-r hover:from-[#4e00a0] hover:to-[#1f3b73] hover:shadow-lg">
+        Convert
+    </button>
+    
+    
+
+ 
         
         <div id="result" class="text-center mt-4 text-lg font-bold text-gray-800 opacity-0 transition-opacity duration-500"></div>
     </div>
